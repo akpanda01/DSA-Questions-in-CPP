@@ -1,0 +1,40 @@
+//INSERTION SORT IMPLEMENTATION 
+
+void insertionSort(vector<int>& arr) {
+    int n = arr.size();
+    for (int i = 1; i < n; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements of arr[0..i-1] that are greater than key to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j]; // Shift the element to the right
+            j = j - 1;
+        }
+        arr[j + 1] = key; // Insert the key at the right position
+    }
+}
+
+
+
+// Recursive function to perform insertion sort
+void insertionSortRecursive(vector<int>& arr, int n) {
+    // Base case: if size is 1, the array is already sorted
+    if (n <= 1) {
+        return;
+    }
+
+    // Sort the first n-1 elements
+    insertionSortRecursive(arr, n - 1);
+
+    // Insert the nth element at the correct position
+    int key = arr[n - 1];
+    int j = n - 2;
+
+    // Shift elements of arr[0..n-2] that are greater than key
+    while (j >= 0 && arr[j] > key) {
+        arr[j + 1] = arr[j];
+        j--;
+    }
+    arr[j + 1] = key; // Place the key at the correct position
+}
