@@ -5,17 +5,18 @@ public:
     int removeDuplicates(vector<int>& nums) {
         if (nums.size() == 0) return 0; // Edge case: empty array
         
-        int slow = 0; // Pointer for the last unique element
+        int i = 0; // Pointer for the last unique element
         
-        for (int fast = 1; fast < nums.size(); fast++) {
-            if (nums[fast] != nums[slow]) {
-                slow++; // Move the slow pointer to the next unique position
-                nums[slow] = nums[fast]; // Update with the unique element
+        for (int j = 1; j < nums.size(); j++) {
+            if (arr[i] != arr[j]) {
+                i++; // Move the slow pointer to the next unique position
+                arr[i] = arr[j]; // Update with the unique element
             }
         }
-        return slow + 1; // Total unique elements
+        return i + 1; // Total unique elements
     }
 };
+
 
 //Another Method
 class Solution {
