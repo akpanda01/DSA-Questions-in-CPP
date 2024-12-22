@@ -2,7 +2,7 @@
 
 class Solution {
 public:
-    // Function to find the maximum score of the smallest and second smallest numbers
+
     int pairWithMaxSum(vector<int>& arr) {
         int n = arr.size();
         if (n < 2) return 0; // If the array has fewer than 2 elements, no valid pair exists.
