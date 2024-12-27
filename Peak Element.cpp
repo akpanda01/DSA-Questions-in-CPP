@@ -3,28 +3,20 @@
 
 class Solution {
 public:
-    int peakElement(vector<int>& arr) {
-        int low = 0, high = arr.size() - 1;
+    int findPeakElement(vector<int>& nums) {
+        int st = 0, end = nums.size() - 1;
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+        while (st < end) {
+            int mid = st + (end - st) / 2;
 
-            // Check if mid is a peak
-            bool leftSmaller = (mid == 0 || arr[mid] > arr[mid - 1]);
-            bool rightSmaller = (mid == arr.size() - 1 || arr[mid] > arr[mid + 1]);
-
-            if (leftSmaller && rightSmaller) {
-                return mid;
-            }
-
-            // Move to the side where a peak is guaranteed to exist
-            if (mid > 0 && arr[mid - 1] > arr[mid]) {
-                high = mid - 1;
+            if (nums[mid] > nums[mid + 1]) {
+                // Peak is in the left half or is the current element
+                end = mid;
             } else {
-                low = mid + 1;
+                // Peak is in the right half
+                st = mid + 1;
             }
         }
-
-        return -1; // This line is never reached because a peak always exists
+        return st; // st == end
     }
 };
